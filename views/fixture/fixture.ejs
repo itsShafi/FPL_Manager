@@ -1,0 +1,609 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+	<style>
+        *, *:after, *:before {
+    box-sizing: border-box;
+  }
+  :root {
+    --color-text-primary: #1c2a38;
+    --color-text-secondary: #8A8F98;
+    --color-text-alert: #d72641;
+    --color-text-icon: #dbdade;
+    --color-bg-primary: #fff;
+    --color-bg-secondary: #f3f5f9;
+    --color-bg-alert: #fdeaec;
+    --color-theme-primary: #623ce6;
+  }
+  button, input, select, textarea {
+    font: inherit;
+  }
+  img {
+    display: block;
+  }
+  strong {
+    font-weight: 600;
+  }
+  body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+  }
+  .match {
+    background-color: var(--color-bg-primary);
+    margin-top : -13% ;
+    display: flex;
+    flex-direction: column;
+    min-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
+  }
+  .match-header {
+    display: flex;
+    padding: 16px;
+    border-bottom: 2px solid rgba(48, 48, 48, 0.1);
+  }
+  .match-status {
+    background-color: var(--color-bg-alert);
+    color: var(--color-text-alert);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    margin-right: auto;
+  }
+  .match-status:before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: currentcolor;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  .match-tournament {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+  .match-tournament img {
+    width: 20px;
+    margin-right: 12px;
+  }
+  .match-actions {
+    display: flex;
+    margin-left: auto;
+  }
+  .btn-icon {
+    border: none;
+    background-color: transparent;
+    color: var(--color-text-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .match-content {
+    display: flex;
+    position: relative;
+  }
+  .column {
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100%/3);
+  }
+  .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .team-logo {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--color-bg-primary);
+    box-shadow: 0 4px 4px 0 rgba(48, 48, 48, 0.15), 0 0 0 15px var(--color-bg-secondary);
+  }
+  .team-logo img {
+    width: 50px;
+  }
+  .team-name {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .match-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .match-date, .match-referee {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+  .match-date strong, .match-referee strong {
+    color: var --color-text-primary;
+  }
+  .match-score {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+  }
+  .match-score-number {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .match-score-number--leading {
+    color: var(--color-theme-primary);
+  }
+  .match-score-divider {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    color: var --color-text-icon;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .match-time-lapsed {
+    color: #DF9443;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .match-referee {
+    margin-top: 12px;
+  }
+  .match-bet-options {
+    display: flex;
+    margin-top: 8px;
+    padding-bottom: 12px;
+  }
+  .match-bet-option {
+    margin-left: 4px;
+    margin-right: 4px;
+    border: 1px solid var(--color-text-icon);
+    background-color: #F9F9F9;
+    border-radius: 2px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 8px;
+  }
+  .match-bet-place {
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    background-color: var(--color-theme-primary);
+    border-radius: 6px;
+    padding: 10px 48px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    box-shadow: 0 4px 8px 0 rgba(48, 48, 48, 0.25);
+  }
+  .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+  body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  perspective: 900;
+  overflow-y: scroll;
+  background-color: #2C3940;
+  font-family: "Titillium Web", sans-serif;
+  color: rgba(48, 69, 92, 0.8);
+}
+.accordion-menu {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin: 150px 0;
+  transform: translate(-50%, 0);
+  max-width: 300px;
+  padding: 10px 20px 20px;
+  border-radius: 5px;
+}
+h2 {
+  font-size: 18px;
+  line-height: 34px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: block;
+  margin: 0;
+  cursor: pointer;
+  color: #6c6c6a;
+}
+p {
+  color: rgba(48, 69, 92, 0.8);
+  font-size: 15px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  max-height: 800px;
+  opacity: 1;
+  transform: translate(0, 0);
+  margin-top: 14px;
+  z-index: 2;
+}
+ul {
+  list-style: none;
+  perspective: 900;
+  padding: 0 20px 10px;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(255, 255, 255, 0.19);
+}
+ul li {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 4px;
+  padding-top: 18px;
+  border-top: 1px dotted #dce7eb;
+}
+ul li:nth-child(1) {
+  border: none;
+}
+ul li:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+ul li:nth-of-type(2) {
+  animation-delay: 0.75s;
+}
+ul li:nth-of-type(3) {
+  animation-delay: 1s;
+}
+ul li:last-of-type {
+  padding-bottom: 0;
+}
+ul li .arrow {
+  position: absolute;
+  transform: translate(-6px, 0);
+  margin-top: 16px;
+  right: 0;
+}
+ul li .fas {
+  color: #2C3940;
+  font-size: 15px;
+  margin-right: 10px;
+}
+ul li .arrow:before, ul li .arrow:after {
+  content: "";
+  position: absolute;
+  background-color: #2C3940;
+  width: 3px;
+  height: 9px;
+}
+ul li .arrow:before {
+  transform: translate(-2px, 0) rotate(45deg);
+}
+ul li .arrow:after {
+  transform: translate(2px, 0) rotate(-45deg);
+}
+ul li input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+}
+ul li input[type=checkbox]:checked ~ p {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translate(0, 50%);
+}
+ul li input[type=checkbox]:checked ~ .arrow:before {
+  transform: translate(2px, 0) rotate(45deg);
+}
+ul li input[type=checkbox]:checked ~ .arrow:after {
+  transform: translate(-2px, 0) rotate(-45deg);
+}
+.transition, p, ul li .arrow:before, ul li .arrow:after {
+  transition: all 0.25s ease-in-out;
+}
+.flipIn, h1, ul li {
+  animation: flipdown 0.5s ease both;
+}
+.no-select, h2 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+
+
+
+
+/* MODS */
+
+#accordion-menu1 {
+    left: 15%;
+    width: 110%;
+}
+
+#accordion-menu2 {
+    left: 65%;
+    width: 110%;
+}
+
+
+
+
+    </style>
+
+</head>
+  <body>
+
+    <div class="container">
+        <!-- code here -->
+        <div class="match">
+            <div class="match-header">
+                <div class="match-status">FULL TIME</div>
+                <div class="match-tournament"><img src="https://assets.codepen.io/285131/pl-logo.svg" />English Premier League</div>
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">____</i></button>
+                    <button class="btn-icon"><i class="material-icons-outlined">____</i></button>
+                </div>
+            </div>
+            <div class="match-content">
+                <div class="column">
+                    <div class="team team--home">
+                        <div class="team-logo">
+                            
+                            <img src="https://assets.codepen.io/285131/chelsea.svg" />
+                        </div>
+                        <h2 class="team-name"> <%= homeTeamName %> </h2>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="match-details">
+                        <div class="match-date">
+                            <%= date %> <%= month %> at <strong>22:30</strong>
+                        </div>
+                        <div class="match-score">
+                            <span class="match-score-number match-score-number--leading"> <%= homeTeamScore %> </span>
+                            <span class="match-score-divider">:</span>
+                            <span class="match-score-number"> <%= awayTeamScore %> </span>
+                        </div>
+                        <div class="match-time-lapsed">
+                            FT
+                        </div>
+                        <div class="match-referee">
+                            Referee: <strong>Mike dean</strong>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div class="team-logo">
+                    
+                            <img src="https://resources.premierleague.com/premierleague/badges/t1.svg" />
+                        </div>
+                        <h2 class="team-name"> <%= awayTeamName %> </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+
+
+
+
+    <div class="accordion-menu" id="accordion-menu1">
+        <ul>
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-code"></i>Goals Scored</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<goalScorers.length ; i++) {%>
+                            <%= i+1 %>. <%= goalScorers[i].FIRST_NAME %>  <%= goalScorers[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-question"></i>Assist</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<assisters.length ; i++) {%>
+                            <%= i+1 %>. <%= assisters[i].FIRST_NAME %>  <%= assisters[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-laugh"></i>Yellow Card</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<yellowCard_players.length ; i++) {%>
+                            <%= i+1 %>. <%= yellowCard_players[i].FIRST_NAME %>  <%= yellowCard_players[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-code"></i>Red Card</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<redCard_players.length ; i++) {%>
+                            <%= i+1 %>. <%= redCard_players[i].FIRST_NAME %>  <%= redCard_players[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+            
+            
+        </ul>
+    </div>
+
+
+    <div class="accordion-menu" id="accordion-menu2">
+        <ul>
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-laugh"></i>Own Goals</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<ownGoalScorers.length ; i++) {%>
+                            <%= i+1 %>. <%= ownGoalScorers[i].FIRST_NAME %>  <%= ownGoalScorers[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-code"></i>Penalty Missed</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<pen_miss_players.length ; i++) {%>
+                            <%= i+1 %>. <%= pen_miss_players[i].FIRST_NAME %>  <%= pen_miss_players[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-question"></i>Penalty Saved</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<pen_save_players.length ; i++) {%>
+                            <%= i+1 %>. <%= pen_save_players[i].FIRST_NAME %>  <%= goalScorers[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-question"></i>Bonus</h2>
+                <p >
+                    <font size="-2">
+                        <%for (let i = 0; i<goalScorers.length ; i++) {%>
+                            <%= i+1 %>. <%= goalScorers[i].FIRST_NAME %>  <%= goalScorers[i].LAST_NAME %><br>
+                        <%}%>
+                    </font>
+                </p>
+            </li>
+            
+            
+        </ul>
+    </div>
+
+    
+    
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

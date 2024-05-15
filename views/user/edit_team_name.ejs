@@ -1,0 +1,648 @@
+<style>
+    /* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.sidebar{
+  position: fixed;
+  height: 100%;
+  width: 240px;
+  background: #0A2558;
+  transition: all 0.5s ease;
+}
+.sidebar.active{
+  width: 60px;
+}
+.sidebar .logo-details{
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.sidebar .logo-details i{
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  min-width: 60px;
+  text-align: center
+}
+.sidebar .logo-details .logo_name{
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}
+.sidebar .nav-links{
+  margin-top: 10px;
+}
+.sidebar .nav-links li{
+  position: relative;
+  list-style: none;
+  height: 50px;
+}
+.sidebar .nav-links li a{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.sidebar .nav-links li a.active{
+  background: #081D45;
+}
+.sidebar .nav-links li a:hover{
+  background: #081D45;
+}
+.sidebar .nav-links li i{
+  min-width: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+.sidebar .nav-links li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.sidebar .nav-links .log_out{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.home-section{
+  position: relative;
+  background: #f5f5f5;
+  min-height: 100vh;
+  width: calc(100% - 240px);
+  left: 240px;
+  transition: all 0.5s ease;
+}
+.sidebar.active ~ .home-section{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.home-section nav{
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 240px);
+  left: 240px;
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+.sidebar.active ~ .home-section nav{
+  left: 60px;
+  width: calc(100% - 60px);
+}
+.home-section nav .sidebar-button{
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+nav .sidebar-button i{
+  font-size: 35px;
+  margin-right: 10px;
+}
+.home-section nav .search-box{
+  position: relative;
+  height: 50px;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 20px;
+}
+nav .search-box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 0 15px;
+}
+nav .search-box .bx-search{
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background: #2697FF;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  transition: all 0.4 ease;
+}
+.home-section nav .profile-details{
+  display: flex;
+  align-items: center;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+  border-radius: 6px;
+  height: 50px;
+  min-width: 190px;
+  padding: 0 15px 0 2px;
+}
+nav .profile-details img{
+  height: 40px;
+  width: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+nav .profile-details .admin_name{
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+nav .profile-details i{
+  font-size: 25px;
+  color: #333;
+}
+.home-section .home-content{
+  position: relative;
+  padding-top: 104px;
+}
+.home-content .overview-boxes{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin-bottom: 26px;
+}
+.overview-boxes .box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 15px);
+  background: #fff;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.overview-boxes .box-topic{
+  font-size: 20px;
+  font-weight: 500;
+}
+.home-content .box .number{
+  display: inline-block;
+  font-size: 35px;
+  margin-top: -6px;
+  font-weight: 500;
+}
+.home-content .box .indicator{
+  display: flex;
+  align-items: center;
+}
+.home-content .box .indicator i{
+  height: 20px;
+  width: 20px;
+  background: #8FDACB;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.box .indicator i.down{
+  background: #e87d88;
+}
+.home-content .box .indicator .text{
+  font-size: 12px;
+}
+.home-content .box .cart{
+  display: inline-block;
+  font-size: 32px;
+  height: 50px;
+  width: 50px;
+  background: #cce5ff;
+  line-height: 50px;
+  text-align: center;
+  color: #66b0ff;
+  border-radius: 12px;
+  margin: -15px 0 0 6px;
+}
+.home-content .box .cart.two{
+   color: #2BD47D;
+   background: #C0F2D8;
+ }
+.home-content .box .cart.three{
+   color: #ffc233;
+   background: #ffe8b3;
+ }
+.home-content .box .cart.four{
+   color: #e05260;
+   background: #f7d4d7;
+ }
+.home-content .total-order{
+  font-size: 20px;
+  font-weight: 500;
+}
+.home-content .sales-boxes{
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 20px; */
+}
+
+/* left box */
+.home-content .sales-boxes .recent-sales{
+  width: 65%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.home-content .sales-boxes .sales-details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sales-boxes .box .title{
+  font-size: 24px;
+  font-weight: 500;
+  /* margin-bottom: 10px; */
+}
+.sales-boxes .sales-details li.topic{
+  font-size: 20px;
+  font-weight: 500;
+}
+.sales-boxes .sales-details li{
+  list-style: none;
+  margin: 8px 0;
+}
+.sales-boxes .sales-details li a{
+  font-size: 18px;
+  color: #333;
+  font-size: 400;
+  text-decoration: none;
+}
+.sales-boxes .box .button{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.sales-boxes .box .button a{
+  color: #fff;
+  background: #0A2558;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.sales-boxes .box .button a:hover{
+  background:  #0d3073;
+}
+
+/* Right box */
+.home-content .sales-boxes .top-sales{
+  width: 35%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px 0 0px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.sales-boxes .top-sales li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.sales-boxes .top-sales li a img{
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 10px;
+  background: #333;
+}
+.sales-boxes .top-sales li a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.sales-boxes .top-sales li .product,
+.price{
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+}
+/* Responsive Media Query */
+@media (max-width: 1240px) {
+  .sidebar{
+    width: 60px;
+  }
+  .sidebar.active{
+    width: 220px;
+  }
+  .home-section{
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+  .sidebar.active ~ .home-section{
+    /* width: calc(100% - 220px); */
+    overflow: hidden;
+    left: 220px;
+  }
+  .home-section nav{
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+  .sidebar.active ~ .home-section nav{
+    width: calc(100% - 220px);
+    left: 220px;
+  }
+}
+@media (max-width: 1150px) {
+  .home-content .sales-boxes{
+    flex-direction: column;
+  }
+  .home-content .sales-boxes .box{
+    width: 100%;
+    overflow-x: scroll;
+    margin-bottom: 30px;
+  }
+  .home-content .sales-boxes .top-sales{
+    margin: 0;
+    
+  }
+}
+@media (max-width: 1000px) {
+  .overview-boxes .box{
+    width: calc(100% / 2 - 15px);
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 700px) {
+  nav .sidebar-button .dashboard,
+  nav .profile-details .admin_name,
+  nav .profile-details i{
+    display: none;
+  }
+  .home-section nav .profile-details{
+    height: 50px;
+    min-width: 40px;
+  }
+  .home-content .sales-boxes .sales-details{
+    width: 560px;
+  }
+}
+@media (max-width: 550px) {
+  .overview-boxes .box{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .sidebar.active ~ .home-section nav .profile-details{
+    display: none;
+  }
+}
+  @media (max-width: 400px) {
+  .sidebar{
+    width: 0;
+  }
+  .sidebar.active{
+    width: 60px;
+  }
+  .home-section{
+    width: 100%;
+    left: 0;
+  }
+  .sidebar.active ~ .home-section{
+    left: 60px;
+    width: calc(100% - 60px);
+  }
+  .home-section nav{
+    width: 100%;
+    left: 0;
+  }
+  .sidebar.active ~ .home-section nav{
+    left: 60px;
+    width: calc(100% - 60px);
+  }
+
+
+  /* MODS */
+  #top-sales-box-1{
+    margin: 0 20px 0 10px;
+  }
+
+}
+
+
+
+
+
+
+
+  </style>
+
+
+<div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">
+        <a href="/" class="logo" target="_blank">
+          <img src="https://www.pngkit.com/png/full/51-516917_premier-league-logo-white.png" alt="" height="50px">
+      </a> 
+      </span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/player">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Players</span>
+          </a>
+        </li>
+        <li>
+          <a href="/team">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Clubs</span>
+          </a>
+        </li>
+        <li>
+          <a href="/gameweek/1">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Fixtures</span>
+          </a>
+        </li>
+        <li>
+          <a href="/leaderboard">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Leaderboards</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Team</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" >
+            <i class='bx bx-message'></i>
+            <span class="links_name">Create Team</span>
+          </a>
+        </li>
+        <li>
+          <a href="user/edit" class="active">
+            <i class='bx bx-heart' ></i>
+            <span class="links_name">Edit Team Name</span>
+          </a>
+        </li>
+        
+        <li class="log_out">
+          <a href="/">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEUAAAD////l5eXk5OTm5ubj4+Pu7u74+Pj19fXw8PDr6+v6+vry8vLp6ene3t7BwcHR0dGVlZWrq6vIyMicnJyzs7Ojo6OGhoZlZWWFhYW2trbY2NhNTU0gICBbW1vOzs5wcHBBQUEpKSmOjo4MDAwxMTE6OjpJSUl3d3dhYWELCwsVFRVMTEw1NTVsbGwdHR17l4ULAAAPf0lEQVR4nN1d63abvBJFIINu2I7vjtPYaZombb+m7/92h5ttBAJ0GeH4zI+ysuslMxbSbLZGowAhlIQ4TLJrhMM4u8Qhjmpo2IfSK0paKJdRwmKWXRBjKc8uGIes/dkuFHejoheNghE8ZFSw6XHx8Lo/fe4+Xh9Wi2OaNchSxWc9eRiFUeFhWPkSTnRRWqK8QsOwur8KxZknYvb6/CNo2dtpdaTlZ6OqheL+Li1oo0KNRhUaJElC4jgm2TW7iOwisqs9Sq9oQsRy/9Z27mrPixAR2t2CKSoUaJD9AEUXRWUXTcJJ3hkTDZRXaPZjFT+wjIaMHj/6vKvs54agNGq0UHRG2Gy36qIeVDTQvN0AK4dZ75Ckfehl8K2+a/hX2G4pUtNJZ2Dw1VBPfZg86LpX2Mtj4q8PPYxDxM38K3w8cuo64jrGoYe5dGbsX27PU+RnLtUdfLrxUJBnKwcz2wwNPvt4OInKYRZNCl+yayfKryhToCFZ2/qX2TtBUTWtXtstfjkDFJeoOKNB1mQ5ezTcqqN8CGUXVCdA9NgMyK0aChot0uSnm4NBsPIRLYynl1ieXi6TDpu6+pfZBzSBC+CoGpkDOJjFfwRA1WpoOdNYhfkGig4gDmZhA7kF/0gO/mDRIoV4REvbeYgW7n2IJ2AO5mMRkMDBjEPBee9bkqltkOE4pN0o1Fy6g3QwCOaWc2mkmEtB4iFZwDoYBAlcPIzcqVqEoabRqz2bcZqwh9OgLqo2SOCuVA2BDsLSNqnCrUhF1dSoOKMg0WID72AQYOkh1HhgI39aG/HhYB4Vnd4PQ3et7Tw9o5MXD4MD/ypaG/w0U9q7sKdqsFqb9Tv9kM3UCtzoWlvky8HgSbhqbSGE1pY4vtX32SGpvq2HlA2iznMp9udgxsBtqRqg1sZWHj0MCL691ia0tXsb26QAWpvRTBM1ZxoO+VrYthdpTpEJnIS2ogWY1obM9Xsji4fWazqoGpzWhrw+pEGwgNXa+CUYcGWI4C2aRP0+pFlIRKp74Mo7483AwSG0Ni9vFXVjfTqNcmEVWGs7+fZwlt5Ya/vj28OH9KZaG4XTSLvsGZlSNQKptaWP3j0MuubSfqoGpbWxV/8e0v5h5llriz/9ezgnIFqb0UwTXWca5+XCYVtw15lm8NHse2D9OxhsFVl+kUTgfGptyQge5pIblNZWUDWe8GzKZbxJiJSoLw2qbu9Iuoc2VeMKqlZHXXQabJc4Y2Z/uA1VA9LaxgiHwY8Emy+WWmttjWXRFHzFSWUshNDaaEnKaEXKqozPIRR51WjOln8rpRUpoyUpK2+pC6US6jSXen7BL40iC6oGpbWN4iHTHXzgWlv2iI/iYf7lkFpb9RBOlGhjpmHbMTycYseZxiFasFH6cIK1qFongbN8Pyzj4UgeAmhtF1LGC0KUXVmdql3QBoETo8TD/NvyMMVa99CLijPqpNOMwdryG2wL3WNpbcsRHPyDQKKF5RvwGO8WP4s+dHkDzjhOQcpog5RpoDQdwcMdV5Myqou6aW0jeLhPlKRsJK3N7+JhaQsyrtYWSVobffLv4QxEazOgajI6Am2bJ9KjeV7Wkx/NPtRNaxsh5E/6lkV1CJzJ+2HUQo/eHfxDAPLaeL4FWUHVhlEuvHu4S5qkjF/uQQ91y4kS33x7uLGjamB5bRQ4vbttc6uNCTZam+oNeBL6V9u4e14bIRn9ojT7tyRlpCRlV5T2oBxmI1C3fUexkO+hut8KpcOoY16bn/Tgq+2ZHVWDy2vj3pJLS3tko+S1Rd0ETngWhVkIkdfmkhPF/b5evHc+miO9W+So14j4gLqomj6BG+zDNlWTUa962xSB5LWxjH5xmnEefqY+PCNlBSqGUZ9KxjdUfVtyvYeClGmg4ow67z8kHtOiHlBXUul4eW3Ua05N6H0PqeK9mDcJHPZHa95g9pBeCVHGdUhBykidJg2iPjaulbYh528j5bcJ+R50UJA9pN5yTCe4W7oYMR4ixDw5+EtYFwHR0to6qJoCZZ52zcww3B5S4zBf338YIT9Zpv9cwnxdpxl8NDUe2BcfHq5Qi5QBam1mfehnDYpB9aEVVWugPnZdvIo6KWNMRdW0UJBaX6lLYaEOIx37f3oJnLd6bTgBj/qvrcEHt4dUtYTRpbWdUQG+3p2A1GurtDaJlGXXGvXRRqE78TVpkTL5HjpR0kTltSe7/fjZj5YCd2KMO6iaepXJo9Z2XSz9D9LBTQJdgUdFyrS0tgsK+hL1DbRe22UurQI6lh9NrECpjFZvJ3s4Dx9TKcyf58doEL2E+ao74erTwMrfz2SYqllpbdpUrYFWLTjVE5RsioepmoHWxliltbGSlLGSlJ2pjwEKpfBvCJPpl/RtNTTpQpM66qC1sSYK85y+cTRM1eQKPH61tguatQ6yO+FQaxe62rWV1iahAM/pKlb0i7PW1iJlLeqjiXJnB59QJ/2yRCFrX4YAtROJJlXTJ3DQ1a4dF/aX0oCC0tr6SpjpaG0ygTu5OLhiyI6qDWptyo7rRRvdGZ0rJWPy197BnSGRCZVEJlQoUa5aW70WtMNs89Lty621tsukU9TzDi0d/ANI1Vpam0S/XAmc7YQ6STrb1SFwSQfqo64+s3rhx3pUTbMCj+ezEWzeFTdDtXagtLZeAteptTXIk83iPgalamqtzZaqKVDzvNPfCJSqwWttV7T4gekvUw8/mAtV6yNwfs4KMt+3t2BezwrSqkHbr7VJKMXGb4oHbE3VtLU2wLmUIOMKWaGqi9TdGSo7rluJ8uOhcUIfr7WgQ9VuobVJlMo4e4E3WxhJa7MmcMZL+0iXGMoETkHVmiik1nYN/uZLpp0ZbCZam5LAeYoWxsluCfYaLXp3dplobec+FMbZGQfcR9W+jtZ2Rs0L0644KFXzp7Wd5zFjTjOpdYaT1tZCfZ0sZ7gzcU5VwwzqbATz8550CJyRi/MUmKo1tTbnjmuf0hki/YDxnWrOmjbdGYJrbVdUN+rvUunBugOt7YLqHVG2EB6omo3WpkPgUANNjoNpNp+xkNs9byvo+bakF20SODitTYj5Qx0tx/5j756a57lIkEzKGM96wV1r83Gy3PqlyJhsHHMsxGPnouJ+KtLWMHsOdo+UJe3B51dri3qpGk6TSakfbhUKXCrixXvbvV8zFSkLaf5/v/dT5EbVQLU2gfj64oFQkSdBeHzcfFyWbJ726wNCRPVZdKbsL2uCkq+gtcVYTFe/rz2zSRWUqiSG/JJmu+W8Nu/Kn6318naCmmcj+Kmp0Pv2xI8n6dn7R5R5Bvl31l438gNH1cNMpglPM8rweFqbisAdW6U/ZgXBlAlcMa1KQv/0OtnK9KtV1HaVH4rkqrXh8nFr5v1WaNhGaYmitWIx9B1df8r6Z2V58Rst0CYpU+ZwbqcCtz8rQlULDTQt5lLraNER6eapgsCh5rLpXqhImVAHls+54rOetTYmHv8pb6ZIuztPLzWidWp+7IgVk0NnBmd+GvKYWhsh6x6mcohblAq1b/0babfLe2pQPE9Ju10NAhdbaG1YLHvZ5qlFqaJYsc90FTfpF+5/GfnFlKQMXGvj4jikMuHmrB4rNY1pM1qI00DDpygeQWtjw9VMTk1KpV7EeG4cOjbQhYVtGau160FrI1xLB53KLfCOxcQll4gWOum0veBKYgiltWmumeUH+l5JWdq17+t7ndYx3aWOt5l0Vhmo1hZr1y6b1uMh6Sy+v0Z1WnfSbf0zHR58FlobNin8/ISupKyv6DePSqKV34NJntHaVmvro2pTo3S1Gbu20EUNgqrsRUXrFK+Q3fZyQLWOw22qVkO1tDZqqmF/v5Ay3isq8ku0MK2LtkC9VM1Qa4snxudYLFg54MP+PL6HC/0yLpHyROC0Nm6TFRuXLYiBzfqkonU2X7FMughcbKS1hehk8e3BnpZjf+hjcREt7Lb0b0G0Nja13OM7T/MWBvum2OE0yNc67IUjrZPl+qgatd5X+ELyX3XwY6/IYpq52pQ5am0uNS82iOhshRKCcodKTI/ISWsTTvVJCacat75isVO9sIWL1kbcqiI+ay2w/RaORSdeua3Wxs0TDBu20MpXUAniRvYhdLW2BlVLvNe1hLJ9m6phPKy1ibtxMC8SYpC5d97xSzwe1Qxva9rcXDKotZFRDsmBsyOVqVqNwKm1NjxGxXxQ44ZaW3zrGza2JzOtTYxQax3a1shAa+NjnDYGbrFiabZTa/N+QqwP+0DaWtsYteR9GNPV2iL37cq3sX2P1pb5WtPa7nIU5sawptZ2hxNpaeu0W2urqFrh4b0+pNlcE0taG+7Q2kY54siTcS2tjd0ZI60b0dLaYsBaQWPbhGhobaOcRO3L5qRHazNcqPyatiRnqtartd3Vq69ss0RLa7t7Dwe1trv3cEBrw8JVQ7yhHUlF1XCP1hbds4fzVrRQaW3/Jx72aG3kdOv7tLc50dLa7pjTzOszTbfWdse8dKKntd3xuwVRam0is5zkCEELriN8lcn3bztUeUFolfyW+9bW2oTratfNbKaptbE7ldrys5E1tbbk1ndqadthra0icMTbkRx+LU0bWluRLI9VKzPmu+m/gq1YX15bXWvLSLifAyv82n+oWTS5S2vLCRx8EXnv9oNws7y2uyM209Qwr20op/Cr2YEZ57WJe1q9eBOsP69NXJnb9cJtkxLHt12xU4KovMiuqry26oegd6LYPApsm9cmhrfT394+E/U5Cnp7SDHq3IT3ReznwWQPKW4TOMro4gsv6j8tEcNKqtantTUf2BTNvuiS6e6gt4e0I69NQqdfT7v59jClTVXNKK9NRhORLL/SxPpje8gGUN8WhJbWprFbnYjZ1vtZ8Tr29/VAql365z2kypnmjBrsIc2YH1ufburdv4+1KG/U3x5SRA6L/U3eH1+2s4jEuEnKhveQtrlOm/rIaD4+j+v9iILV+/bxUOwhV5AyNVWr/dnBvCOJwLXQIuqg6XKz33llr98/X9fLqRBtUjZOvTacpqWjjw/b3V9A9vPv5+d+NVtOi0I8At+gXpuMhhgXPzKezuez9cP+4/n975th1/7+9vN9t9+/bmZzTDHNQ91lmEHUa2tQNTWBu6KkE83jUP4N2QjIo1Lm8TKz9WKx2axWD7lVl80is8fZ8jg/zKdRwouCPKhsodauRL/UpGwQVSlRXQSujjYKe0TKch/ZY5zX2kkZyzs5ZxOVE7y4pBRdM+w812vr8HAYrR0OVtVra6BSERAN1Ooosl7UsV6bRW23/mIdPfTLEgWYaaIWeVKjpBMNndEmVauh/wN+TxavYx3+DgAAAABJRU5ErkJggg==" alt="">
+        <span class="admin_name">  asdas</span>
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Players</div>
+            <div class="number">5</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bx-cart-alt cart'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Users</div>
+            <div class="number">5</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-add cart two' ></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Leagues</div>
+            <div class="number">5</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bx-cart cart three' ></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Clubs</div>
+            <div class="number">5</div>
+            <div class="indicator">
+              <i class='bx bx-down-arrow-alt down'></i>
+              <span class="text">Down From Today</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-download cart four' ></i>
+        </div>
+      </div>
+
+
+      <!-- MODS 1 -->
+
+      <!-- MODS 2-->
+      <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <div class="container">
+    
+    
+                    <h1 class="text-center mb-3">Current team name: <i><%= team_name[0].NAME%></i></h1>
+                    <h3 class="text-center mb-3">Manager: <i><%= username%></i></h3>
+                    <form action="/user/edit_team_name" method="POST">
+                        <div class="form-group">
+                            <label for="new_name">
+                                Enter new name
+                            </label>
+                            <input
+                                    type="text"
+                                    id="new_name"
+                                    name="new_name"
+                                    class="form-control"
+                                    placeholder="Enter new name"
+                            />
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn-info btn">Rename team</button>
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+      
+    </div>
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+

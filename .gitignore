@@ -1,0 +1,86 @@
+# Ignore build directories
+/build/
+/out/
+
+# Ignore Maven/Gradle directories
+/.mvn/
+/target/
+/.gradle/
+/build/
+
+# Ignore IntelliJ IDEA project files
+/.idea/
+/*.iml
+*.iws
+
+# Ignore NetBeans project files
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Ignore Eclipse project files
+/.classpath
+/.project
+/.settings/
+
+# Ignore VS Code project files
+/.vscode/
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Ignore temporary files created by various editors
+*~
+*.swp
+*.swo
+.*.sw?
+*$~ 
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.temp
+*.out
+*.pid
+*.gz
+
+# Ignore Java JAR/WAR files
+*.jar
+*.war
+
+# Ignore compiled Java class files
+*.class
+
+# Ignore packaged dependencies
+lib/
+
+# Ignore specific JavaFX files if using specific frameworks or tools (adjust accordingly)
+# Example for Gluon Mobile
+/gluonfx/
+
+# Ignore local environment config files
+.env
+
+# Ignore generated docs
+/docs/
+
+# Ignore node_modules (if using Node.js for frontend tasks)
+node_modules/
+
+# Ignore any personal settings or files
+*.local
+
+# Ignore IntelliJ IDEA files for specific projects
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
